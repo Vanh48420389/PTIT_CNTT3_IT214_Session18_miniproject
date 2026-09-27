@@ -1,0 +1,13 @@
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+*.log
+.DS_Store
+.idea/
+*.iml
+.project
+.classpath
+.settings/

@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lower-case-service-id: true
+      routes:
+        - id: identity-service-route
+          uri: lb://identity-service
+          predicates:
+            - Path=/api/auth/**
+
+        - id: customer-service-route
+          uri: lb://customer-service
+          predicates:
+            - Path=/api/customers/**, /api/staff/**
+
+        - id: account-service-route
+          uri: lb://account-service
+          predicates:
+            - Path=/api/accounts/**, /api/account-types/**
+
+        - id: transaction-service-route
+          uri: lb://transaction-service
+          predicates:
+            - Path=/api/transactions/**
+
+        - id: notification-service-route
+          uri: lb://notification-service
+          predicates:
+            - Path=/api/notifications/**
